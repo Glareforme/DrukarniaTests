@@ -17,6 +17,13 @@ namespace DrukarniaTests.Helpers
             _url = url;
         }
 
+        /// <summary>
+        /// Send asynchronous POST request
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="body">The request body convert to json format</param>
+        /// <param name="headers">If headers are not needed you can skip this param</param>
+        /// <returns></returns>
         public async Task<HttpResponseMessage> PostAsync(string endpoint, string body, Dictionary<string, string> headers = null)
         {
             handler.CookieContainer = cookies;

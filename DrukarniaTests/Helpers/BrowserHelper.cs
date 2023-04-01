@@ -1,8 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using DrukarniaTests.Constants;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace DrukarniaTests.Helpers
 {
@@ -44,7 +46,7 @@ namespace DrukarniaTests.Helpers
             _driver.SwitchTo().Window(_driver.WindowHandles[0]);
         }
 
-        internal static IWebElement FindElementWithWaits(By selector, int waitTime)
+        public static IWebElement FindElementWithWaits(By selector, int waitTime)
         {
             try
             {
@@ -57,6 +59,21 @@ namespace DrukarniaTests.Helpers
             {
                 throw new WebDriverTimeoutException($@"Element not found before timeout: {exception}");
             }
+        }
+
+        public static bool GetCurrentUrlWithWait(string expectedUrl, string actualUrl)
+        {
+            bool urlIsCorrect;
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(BaseConstants.LongWait));
+            try
+            {
+                urlIsCorrect = wait.Until(x => x.Url.Equals(expectedUrl));
+            }
+            catch (WebDriverTimeoutException exception)
+            {
+                throw new WebDriverTimeoutException($@"Element not found before timeout: {exception}");
+            }
+            return urlIsCorrect;
         }
 
         internal static void MoveToElement(By selector)

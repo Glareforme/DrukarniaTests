@@ -2,23 +2,25 @@ using DrukarniaTests.Constants;
 using DrukarniaTests.Controllers;
 using DrukarniaTests.Helpers;
 using DrukarniaTests.POM.Methods;
+using OpenQA.Selenium;
 
 namespace DrukarniaTests.UITests
 {
     public class Authorization
     {
         AuthMethods authMethods = new AuthMethods();
+        AuthorizationController authorizationController = new AuthorizationController();
 
-        [TestCase("***@gmail.com", "***")]
-        public async Task LoginWithValidData(string email, string password)
+        [Test]
+        public void LoginWithValidData()
         {
             authMethods.OpenAuthModalWindow();
             authMethods.ClickContinueWithEmail();
-            authMethods.EnterDataInEmailField(email);
-            authMethods.EnterDataInpasswordFiled(password);
+            authMethods.EnterDataInEmailField(BaseConstants.EmailForLogin);
+            authMethods.EnterDataInpasswordFiled(BaseConstants.PasswordForLogin);
             authMethods.ClickSubmitButton();
 
-            BrowserHelper.GetBrowser().Url.Should().BeEquivalentTo("https://beta.drukarnia.com.ua/home");
+            BrowserHelper.GetCurrentUrlWithWait(BrowserHelper.GetBrowser().Url.ToString(), BaseConstants.HomePage).Should().BeTrue();
         }
 
         #region SetUp
