@@ -9,10 +9,7 @@ namespace DrukarniaTests.UITests
     {
         AuthMethods authMethods = new AuthMethods();
 
-        /// <summary>
-        /// UI authorization is not working. After login with the correct credentials opens the registration module
-        /// </summary>
-        [TestCase("ronpo***@gamil.com", "***")]
+        [TestCase("***@gmail.com", "***")]
         public async Task LoginWithValidData(string email, string password)
         {
             authMethods.OpenAuthModalWindow();
@@ -21,7 +18,7 @@ namespace DrukarniaTests.UITests
             authMethods.EnterDataInpasswordFiled(password);
             authMethods.ClickSubmitButton();
 
-            BrowserHelper.GetBrowser().Url.Should().BeEquivalentTo(BaseConstants.BaseURL);
+            BrowserHelper.GetBrowser().Url.Should().BeEquivalentTo("https://beta.drukarnia.com.ua/home");
         }
 
         #region SetUp
