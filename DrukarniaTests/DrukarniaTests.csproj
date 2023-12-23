@@ -15,15 +15,20 @@
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
 		<PackageReference Include="FluentAssertions" Version="6.10.0" />
+		<PackageReference Include="GSF.Core" Version="2.4.28" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
 		<PackageReference Include="NUnit" Version="3.13.3" />
-		<PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
-		<PackageReference Include="NUnit.Analyzers" Version="3.3.0" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
+		<PackageReference Include="NUnit.Analyzers" Version="3.6.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="coverlet.collector" Version="3.1.2" />
-		<PackageReference Include="Selenium.Support" Version="4.8.2" />
-		<PackageReference Include="Selenium.WebDriver" Version="4.8.2" />
-		<PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="111.0.5563.6400" />
+		<PackageReference Include="Selenium.Support" Version="4.16.2" />
+		<PackageReference Include="Selenium.WebDriver" Version="4.16.2" />
+		<PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="120.0.6099.10900" />
 	</ItemGroup>
 	<ItemGroup Condition="$(VisualStudioVersion) == '17.0'">
 		<Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

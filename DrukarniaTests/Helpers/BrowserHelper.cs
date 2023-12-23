@@ -1,9 +1,11 @@
 ﻿using DrukarniaTests.Constants;
+using FluentAssertions.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 
 namespace DrukarniaTests.Helpers
@@ -17,7 +19,8 @@ namespace DrukarniaTests.Helpers
         public static IWebDriver CreateBrowser()
         {
             options = new ChromeOptions();
-            options.AddArguments("--start-maximized");
+            options.AddArgument("--start-maximized");
+            // options.AddArgument("--headless");
             _driver = new ChromeDriver(options);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
@@ -28,6 +31,8 @@ namespace DrukarniaTests.Helpers
         {
             return _driver == null ? CreateBrowser() : _driver;
         }
+
+        public static void Crutch() => Thread.Sleep(BaseConstants.LongWait.Seconds());
 
         internal static void CleanDriver()
         {
@@ -48,32 +53,46 @@ namespace DrukarniaTests.Helpers
 
         public static IWebElement FindElementWithWaits(By selector, int waitTime)
         {
+            IWebElement element = null;
+
             try
             {
-                var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(waitTime));
-                var element = wait.Until(wd => wd.FindElement(selector));
-
+                element = new WebDriverWait(_driver, TimeSpan.FromSeconds(waitTime)).Until(ExpectedConditions.ElementToBeClickable(selector));
                 return element;
             }
             catch (WebDriverTimeoutException exception)
             {
+                element = FindElementWithoutWait(selector);
+
+                return element != null ? element :
                 throw new WebDriverTimeoutException($@"Element not found before timeout: {exception}");
             }
         }
 
-        public static bool GetCurrentUrlWithWait(string expectedUrl, string actualUrl)
+        public static IWebElement FindElementWithoutWait(By selector)
         {
-            bool urlIsCorrect;
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(BaseConstants.LongWait));
+            var element = _driver.FindElement(selector);
+            return element.Displayed ? element : null;
+        }
+
+        public static WebDriverWait GetCurrentSessionInfo()
+        {
+            var sessionData = new WebDriverWait(GetBrowser(), TimeSpan.FromSeconds(BaseConstants.LongWait));
+            return sessionData;
+        }
+
+
+        public static bool IsUrlCorrect(string expectedUrl)
+        {
             try
             {
-                urlIsCorrect = wait.Until(x => x.Url.Equals(expectedUrl));
+                return GetCurrentSessionInfo().Until(ExpectedConditions.UrlToBe(expectedUrl));
             }
-            catch (WebDriverTimeoutException exception)
+            catch (WebDriverTimeoutException)
             {
-                throw new WebDriverTimeoutException($@"Element not found before timeout: {exception}");
+
+                return false;
             }
-            return urlIsCorrect;
         }
 
         internal static void MoveToElement(By selector)
