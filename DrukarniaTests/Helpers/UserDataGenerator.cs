@@ -8,7 +8,6 @@ namespace DrukarniaTests.Helpers
 
         internal static string GenerateMail()
         {
-            var tempEmailAndPassword = new Dictionary<string, string>();
             string tempMail = "test";
             tempMail += (DateTime.Now.ToBinary() * -1 + "@gmail.com");
             return tempMail;

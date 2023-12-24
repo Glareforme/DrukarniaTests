@@ -6,7 +6,6 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using System;
 
 namespace DrukarniaTests.Helpers
 {
@@ -20,7 +19,7 @@ namespace DrukarniaTests.Helpers
         {
             options = new ChromeOptions();
             options.AddArgument("--start-maximized");
-            // options.AddArgument("--headless");
+            options.AddArgument("--headless");
             _driver = new ChromeDriver(options);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
@@ -32,7 +31,11 @@ namespace DrukarniaTests.Helpers
             return _driver == null ? CreateBrowser() : _driver;
         }
 
-        public static void Crutch() => Thread.Sleep(BaseConstants.LongWait.Seconds());
+        public static IWebDriver SetCookie(Cookie cookie)
+        {
+            _driver.Manage().Cookies.AddCookie(cookie);
+            return _driver;
+        }
 
         internal static void CleanDriver()
         {
@@ -104,5 +107,7 @@ namespace DrukarniaTests.Helpers
         }
 
         internal static void CloseDriver() => _driver.Quit();
+
+        public static void Crutch() => Thread.Sleep(BaseConstants.LongWait.Seconds());
     }
 }

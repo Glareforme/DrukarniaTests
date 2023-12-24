@@ -6,8 +6,9 @@ namespace DrukarniaTests.Helpers
     internal class AuthorizationController
     {
         ApiRequestHelper apiRequestHelper = new ApiRequestHelper(BaseConstants.BaseURL);
+        AuthorizationController controller = new AuthorizationController();
 
-        public async Task<Cookie> GetValidToken(string email, string password)
+        private async Task<Cookie> GetValidToken(string email, string password)
         {
             Dictionary<string, string> headers = new Dictionary<string, string>()
             {
@@ -18,6 +19,12 @@ namespace DrukarniaTests.Helpers
             var request = await apiRequestHelper.PostAsync("api/users/login", body, headers);
             IEnumerable<Cookie> responseCookies = apiRequestHelper.cookies.GetAllCookies();
             return responseCookies.FirstOrDefault(x => x.Name == "token");
+        }
+
+        public async Task LoginWithApi(string login, string password)
+        {
+            var cookies = await controller.GetValidToken(login, password);
+            BrowserHelper.SetCookie(new OpenQA.Selenium.Cookie(cookies.Name, cookies.Value));
         }
     }
 }
