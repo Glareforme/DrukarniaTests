@@ -5,7 +5,7 @@ namespace DrukarniaTests.Helpers
 {
     internal class AuthorizationController
     {
-        ApiRequestHelper apiRequestHelper = new ApiRequestHelper(BaseConstants.BaseURL);
+        ApiRequestHelper apiRequestHelper = new ApiRequestHelper(UrlConsts.BaseURL);
         AuthorizationController controller = new AuthorizationController();
 
         private async Task<Cookie> GetValidToken(string email, string password)

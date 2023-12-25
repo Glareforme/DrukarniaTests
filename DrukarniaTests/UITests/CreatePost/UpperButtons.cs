@@ -3,6 +3,21 @@
     internal class UpperButtons
     {
         [Test]
-        public void HomePage
+        public void CheckHomePageButtonsWorkCorrect() { }
+
+        [Test]
+        public void CheckSearchButtonWorkCorrect() { }
+
+        [Test]
+        public void CheckSavedButtonWorkCorrect() { }
+
+        [Test]
+        public void CheckSavedPostButtonWorkCorrect() { }
+
+        [Test]
+        public void CheckDraftsButtonWorkCorrect() { }
+
+        [Test]
+        public void ChecPublicatePostButtonkWorkCorrect() { }
     }
 }

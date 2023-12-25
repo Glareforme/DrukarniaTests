@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DrukarniaTests.UITests.CreatePost
+﻿namespace DrukarniaTests.UITests.CreatePost
 {
     internal class WorkWithTable
     {
+        [Test]
+        public void AddingTableToPageWorkCorrect() { }
+
+        [Test]
+        public void AddingRowsToTableWorkCorrect() { }
+
+        [Test]
+        public void AddingCollumnsToTableWorkCorrect() { }
+
+        [Test]
+        public void RemovingTableFromPageWorkCorrect() { }
+
+        [Test]
+        public void AddingTextIntoEveryCellWorkCorrect() { }
+
+        [Test]
+        public void RemoveingTextFromEveryCellWorkCorrect() { }
     }
 }

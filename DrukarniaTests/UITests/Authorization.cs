@@ -19,7 +19,7 @@ namespace DrukarniaTests.UITests
             authMethods.EnterDataInpasswordFiled(BaseConstants.PasswordForLogin);
             authMethods.ClickSubmitButton();
 
-            BrowserHelper.IsUrlCorrect(BaseConstants.HomePage).Should().BeTrue();
+            BrowserHelper.IsUrlCorrect(UrlConsts.HomePage).Should().BeTrue();
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace DrukarniaTests.UITests
             authMethods.EnterDataInpasswordFiled(UserDataGenerator.GeneratePassword());
             authMethods.ClickSubmitButton();
 
-            BrowserHelper.IsUrlCorrect(BaseConstants.HomePage).Should().BeFalse();
+            BrowserHelper.IsUrlCorrect(UrlConsts.HomePage).Should().BeFalse();
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace DrukarniaTests.UITests
         [SetUp]
         public void SetUpURL()
         {
-            BrowserHelper.GetBrowser().Navigate().GoToUrl(BaseConstants.BaseURL);
+            BrowserHelper.GetBrowser().Navigate().GoToUrl(UrlConsts.BaseURL);
             BrowserHelper.Crutch();
         }
 
