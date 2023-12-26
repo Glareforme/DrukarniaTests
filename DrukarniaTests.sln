@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrukarniaTests", "DrukarniaTests\DrukarniaTests.csproj", "{E50B474E-4AE3-494C-839C-C9C5D7BD0A69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrukarniaTests", "DrukarniaTests\DrukarniaTests.csproj", "{E50B474E-4AE3-494C-839C-C9C5D7BD0A69}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlDataManager", "SqlManager\SqlDataManager.csproj", "{6A3F3FAC-676C-4F7D-BAD2-FF67038C4253}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{E50B474E-4AE3-494C-839C-C9C5D7BD0A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E50B474E-4AE3-494C-839C-C9C5D7BD0A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E50B474E-4AE3-494C-839C-C9C5D7BD0A69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A3F3FAC-676C-4F7D-BAD2-FF67038C4253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A3F3FAC-676C-4F7D-BAD2-FF67038C4253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A3F3FAC-676C-4F7D-BAD2-FF67038C4253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A3F3FAC-676C-4F7D-BAD2-FF67038C4253}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
