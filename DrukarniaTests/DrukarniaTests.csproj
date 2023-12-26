@@ -51,6 +51,9 @@
 			<Private>True</Private>
 		</Reference>
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\SqlManager\SqlDataManager.csproj" />
+	</ItemGroup>
 	<PropertyGroup>
 		<SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
 	</PropertyGroup>

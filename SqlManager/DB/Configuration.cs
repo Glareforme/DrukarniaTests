@@ -1,14 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
-using DrukarniaTests.Models;
+﻿using DrukarniaTests.SqlManager.Models;
+using Microsoft.Extensions.Configuration;
 
-namespace DrukarniaTests.Helpers
+namespace DrukarniaTests.SqlManager.DB
 {
-    internal class ConfiguratorHelper
+    internal class Configuration
     {
-        private static readonly string FileName = Path.GetFullPath(@"..//..//..//settings.json");
+        private static readonly string FileName = Path.GetFullPath(@"..//..//..//prop.json");
         private static readonly IConfigurationRoot Config;
 
-        static ConfiguratorHelper()
+        static Configuration()
         {
             Config = ReadFromJsonFile(FileName);
         }
@@ -22,9 +22,10 @@ namespace DrukarniaTests.Helpers
             return builder.Build();
         }
 
-        public static SqlConnectionModel GetSqlSectionModel()
+        public static DatabaseConString GetSqlModel()
         {
-            return Config.GetSection("dbSection").Get<SqlConnectionModel>();
+            return Config.Get<DatabaseConString>();
         }
+
     }
 }

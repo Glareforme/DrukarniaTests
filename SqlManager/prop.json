@@ -1,0 +1,3 @@
+{
+  "DBConString": "Server=(localdb)\\MSSQLLocalDB;Database=Drukarnia;Trusted_Connection=True;"
+}
