@@ -9,6 +9,9 @@
         public void CheckSearchButtonWorkCorrect() { }
 
         [Test]
+        public void CheckCreatePostButtonInactive() { }
+
+        [Test]
         public void CheckSavedButtonWorkCorrect() { }
 
         [Test]

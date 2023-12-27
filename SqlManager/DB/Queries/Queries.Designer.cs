@@ -86,5 +86,14 @@ namespace SqlDataManager.DB.Queries {
                 return ResourceManager.GetString("InsertPost", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM [dbo].[PostContent] WHERE PostName = @PostName.
+        /// </summary>
+        internal static string SelectPostContent {
+            get {
+                return ResourceManager.GetString("SelectPostContent", resourceCulture);
+            }
+        }
     }
 }

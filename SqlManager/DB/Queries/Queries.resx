@@ -132,4 +132,7 @@ Attachments) VALUES
 @Attachments
 )</value>
   </data>
+  <data name="SelectPostContent" xml:space="preserve">
+    <value>SELECT * FROM [dbo].[PostContent] WHERE PostName = @PostName</value>
+  </data>
 </root>

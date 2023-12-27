@@ -28,34 +28,34 @@ namespace DrukarniaTests.SqlManager.DB
             CloseConnection();
         }
 
-        public static void InsertPostSQL(CreatePostModel postData)
+        public static CreatePostModel SelectPost()
         {
-            dbConnection.Open();
-            using (SqlCommand command = new SqlCommand("INSERT INTO [dbo].[PostContent] (PostName, PostText, FileType, Attachments) VALUES (@PostName, @PostText, @FileType, @Attachments)", dbConnection))
-            {
-                command.Parameters.AddWithValue("@PostName", postData.PostName);
-                command.Parameters.AddWithValue("@PostText", postData.PostText);
-                command.Parameters.AddWithValue("@FileType", postData.FileType);
-                command.Parameters.AddWithValue("@Attachments", postData.Attachments);
+            string sqlCommand = Queries.SelectPostContent;
+            var respModel = new CreatePostModel();
 
-                // Execute the command
-                command.ExecuteNonQuery();
+            using (SqlCommand command = new SqlCommand(sqlCommand, dbConnection))
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    respModel.PostName = reader["PostName"].ToString();
+                    respModel.PostText = reader["PostText"].ToString();
+                    respModel.FileType = reader["FileType"].ToString();
+                    respModel.Attachments = (byte[])reader["Attachments"];
+                }
             }
+
             CloseConnection();
+            return respModel;
         }
 
-
-        /*     public static void SelectPost()
-             {
-                 dbConnection
-             }
-        */
         public static void CleanUpTable()
         {
             dbConnection.Query(Queries.CleanTable);
+            CloseConnection();
         }
 
-        public static void CloseConnection()
+        private static void CloseConnection()
         {
             dbConnection.Close();
         }
