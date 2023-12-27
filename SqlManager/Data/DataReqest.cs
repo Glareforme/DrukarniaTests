@@ -1,4 +1,5 @@
 ﻿using DrukarniaTests.SqlManager.Models;
+using System.Text;
 
 namespace DrukarniaTests.SqlManager.Data
 {
@@ -6,6 +7,8 @@ namespace DrukarniaTests.SqlManager.Data
     {
         public static CreatePostModel ColectAllDataForPost()
         {
+            Console.OutputEncoding = Encoding.UTF8;
+
             var postData = new CreatePostModel();
             try
             {

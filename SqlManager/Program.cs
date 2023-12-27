@@ -1,10 +1,13 @@
 ﻿using DrukarniaTests.SqlManager.Data;
 using DrukarniaTests.SqlManager.DB;
+using System.Text;
 
 public static class Program
 {
     public static void Main(string[] args)
     {
+        Console.InputEncoding = Encoding.Unicode;
+
         if (args.Length == 0)
             args = new string[] { "-insert" };
 
@@ -19,7 +22,7 @@ public static class Program
                 Console.WriteLine("Complete");
                 break;
             case "-select":
-                
+
                 break;
         }
     }

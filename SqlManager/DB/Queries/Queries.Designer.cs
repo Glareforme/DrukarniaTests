@@ -75,8 +75,8 @@ namespace SqlDataManager.DB.Queries {
         ///PostText,
         ///FileType,
         ///Attachments) VALUES
-        ///(N&apos;@PostName&apos;,
-        ///(N&apos;@PostText&apos;),
+        ///(@PostName,
+        ///@PostText,
         ///@FileType,
         ///@Attachments
         ///).

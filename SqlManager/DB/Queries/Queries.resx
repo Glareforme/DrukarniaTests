@@ -126,8 +126,8 @@
 PostText,
 FileType,
 Attachments) VALUES
-(N'@PostName',
-(N'@PostText'),
+(@PostName,
+@PostText,
 @FileType,
 @Attachments
 )</value>

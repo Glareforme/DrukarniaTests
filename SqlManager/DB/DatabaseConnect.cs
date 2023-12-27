@@ -28,11 +28,28 @@ namespace DrukarniaTests.SqlManager.DB
             CloseConnection();
         }
 
+        public static void InsertPostSQL(CreatePostModel postData)
+        {
+            dbConnection.Open();
+            using (SqlCommand command = new SqlCommand("INSERT INTO [dbo].[PostContent] (PostName, PostText, FileType, Attachments) VALUES (@PostName, @PostText, @FileType, @Attachments)", dbConnection))
+            {
+                command.Parameters.AddWithValue("@PostName", postData.PostName);
+                command.Parameters.AddWithValue("@PostText", postData.PostText);
+                command.Parameters.AddWithValue("@FileType", postData.FileType);
+                command.Parameters.AddWithValue("@Attachments", postData.Attachments);
+
+                // Execute the command
+                command.ExecuteNonQuery();
+            }
+            CloseConnection();
+        }
+
+
         /*     public static void SelectPost()
              {
                  dbConnection
              }
-     */
+        */
         public static void CleanUpTable()
         {
             dbConnection.Query(Queries.CleanTable);
@@ -44,3 +61,4 @@ namespace DrukarniaTests.SqlManager.DB
         }
     }
 }
+

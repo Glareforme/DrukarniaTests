@@ -1,0 +1,1 @@
+INSERT INTO [dbo].[PostContent] (PostName, PostText) VALUES (N' ', N' ')
