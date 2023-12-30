@@ -6,7 +6,6 @@ namespace DrukarniaTests.Helpers
     internal class AuthorizationController
     {
         ApiRequestHelper apiRequestHelper = new ApiRequestHelper(UrlConsts.BaseURL);
-        AuthorizationController controller = new AuthorizationController();
 
         private async Task<Cookie> GetValidToken(string email, string password)
         {
@@ -23,8 +22,8 @@ namespace DrukarniaTests.Helpers
 
         public async Task LoginWithApi(string login, string password)
         {
-            var cookies = await controller.GetValidToken(login, password);
-            BrowserHelper.SetCookie(new OpenQA.Selenium.Cookie(cookies.Name, cookies.Value));
+            var cookies = await GetValidToken(login, password);
+            BrowserHelper.SetCookie(new OpenQA.Selenium.Cookie(cookies.Name, cookies.Value, "/"));
         }
     }
 }

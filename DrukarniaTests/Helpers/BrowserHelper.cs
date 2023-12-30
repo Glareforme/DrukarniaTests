@@ -19,7 +19,7 @@ namespace DrukarniaTests.Helpers
         {
             options = new ChromeOptions();
             options.AddArgument("--start-maximized");
-            options.AddArgument("--headless");
+             options.AddArgument("--headless");
             _driver = new ChromeDriver(options);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
@@ -33,7 +33,7 @@ namespace DrukarniaTests.Helpers
 
         public static IWebDriver SetCookie(Cookie cookie)
         {
-            _driver.Manage().Cookies.AddCookie(cookie);
+            GetBrowser().Manage().Cookies.AddCookie(cookie);
             return _driver;
         }
 

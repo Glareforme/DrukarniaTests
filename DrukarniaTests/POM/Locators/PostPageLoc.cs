@@ -4,14 +4,15 @@ namespace DrukarniaTests.POM.Locators
 {
     internal class PostPageLoc
     {
-        #region Upper buttons
+        #region Header buttons
         public static By HomePageButton = By.XPath("//span[text()='Друкарня']");
         public static By PersonFeedButton = By.XPath("//a[contains(@title,'стрічка')] or contains(text(),'стрічка')]");
         public static By SearchButton = By.XPath("//a [contains(@title,'ошук')] or contains(text(),'ошук')]");
         public static By CreatePostButton = By.XPath("//a [contains(@title,'аписати') or contains(text(),'аписати')]");
         public static By SavedLongreadsButton = By.XPath("//a [contains(@title,'бережені') or contains(text(),'бережені')]");
+        public static By NotificationButton = By.XPath("//a [contains(@title,'повіщення') or contains(text(),'повіщення')]");
         public static By DraftsButton = By.XPath("//span [contains(text(),'ернетки')]");
-        public static By ReleaseLongread = By.XPath("//button[@class='call-to-action']");
+        public static By ReleaseLongreadButton = By.XPath("//button[@class='call-to-action']");
         #endregion
 
         #region Page field 
@@ -51,6 +52,8 @@ namespace DrukarniaTests.POM.Locators
         #region FAQ Button
         public static By OpenFaqPopUp = By.Id("headlessui-menu-button-1");
         public static By ListOfFrequentQuestions = By.Id("headlessui-menu-items-2");
+        public static By HintDialogSection = By.XPath("//section[@role='dialog']");
+        public static By CloseDialogSectionButton = By.XPath("//h2[@id='semantic-section-1']/following-sibling::button");
         #endregion
 
     }

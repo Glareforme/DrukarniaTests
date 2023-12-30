@@ -11,6 +11,9 @@ namespace DrukarniaTests.Constants
         public const string BaseURL = "https://drukarnia.com.ua/";
         public const string HomePage = "https://drukarnia.com.ua/home";
         public const string SearchPage = "https://drukarnia.com.ua/search";
-        public const string CreatePostpage = "https://drukarnia.com.ua/article/write";
+        public const string CreatePostPage = "https://drukarnia.com.ua/article/write";
+        public const string BookmarksPage = "https://drukarnia.com.ua/bookmarks";
+        public const string NotificationPage = "https://drukarnia.com.ua/notifications";
+
     }
 }
